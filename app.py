@@ -173,7 +173,7 @@ def automated_readability_index(num_chars, num_words, num_sentences):
 app = Flask(__name__)
 
 # Load the trained model
-model = joblib.load('.\\model\\trained_model.pkl')
+model = joblib.load('/app/model/trained_model.pkl')
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -209,5 +209,5 @@ def predict():
     return jsonify(response)
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
 

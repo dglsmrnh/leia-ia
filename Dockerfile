@@ -46,6 +46,7 @@ COPY . .
 
 # Expose the port that the application listens on.
 EXPOSE 8000
+EXPOSE 5000
 
 # Run the application.
-CMD py app.py
+CMD python app.py
