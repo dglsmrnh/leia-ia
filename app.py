@@ -110,7 +110,7 @@ def count_syllables(word):
 
 def flesch_reading_ease(num_words, num_sentences, num_syllables):
     """
-    Calculate the Flesch Reading Ease score.
+    Calculate the Flesch-Kincaid Reading Ease score.
     
     Args:
     - num_words: Total number of words in the text
@@ -120,7 +120,7 @@ def flesch_reading_ease(num_words, num_sentences, num_syllables):
     Returns:
     - score: Flesch Reading Ease score
     """
-    score = 227 - 1.04 * (num_words / num_sentences) - 72 * (num_syllables / num_words)
+    score = (0.36 * (num_words / num_sentences)) + (10.4 * (num_syllables / num_words)) - 18
     return score
 
 def indice_gulpease(num_chars, num_words, num_sentences):
@@ -193,7 +193,7 @@ def predict():
     # Make prediction
     probabilities = model.predict_proba(features)
     # Probability of being 1
-    probability = round(probabilities[0][1] * 100,2)
+    probability = (flesch + ari + colemanliau) / 3
     
     # Construct dictionary containing prediction and feature values
     response = {
